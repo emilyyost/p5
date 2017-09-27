@@ -5,7 +5,7 @@ var carRightOnce = false;
 var bikeUpOnce = true;
 var otherMouseX;
 var otherMouseY;
-var mouseClickCounter = 0;
+//var mouseClickCounter = 0;
 var honkText = "Honk!";
 
 function setup() {
@@ -136,6 +136,8 @@ function draw() {
       xBikeGo = 290;
     }
   }
+  otherMouseX = winMouseX;
+  otherMouseY = winMouseY;
 }
 
 function keyPressed() {
@@ -155,14 +157,17 @@ function keyPressed() {
 }
 
 function mouseClicked() {
-  mouseClickCounter++;
-  if (mouseClickCounter > 0) {
-    otherMouseX = winMouseX;
-    otherMouseY = winMouseY;
+
+}
+  //mouseClickCounter++;
+  //if (mouseClickCounter > 0) {
+
   //honkText;
 }
-}
-}
+
+
+
+
 
 //  for (var i = 0; i < mouseClickCounter; i++) {
 //    honkText = honkText + honkText;
