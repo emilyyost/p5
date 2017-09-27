@@ -155,12 +155,15 @@ function keyPressed() {
 }
 
 function mouseClicked() {
-  otherMouseX = winMouseX;
-  otherMouseY = winMouseY;
-  //mouseClickCounter++;
+  mouseClickCounter++;
+  if (mouseClickCounter > 0) {
+    otherMouseX = winMouseX;
+    otherMouseY = winMouseY;
   //honkText;
+}
+}
+}
 
 //  for (var i = 0; i < mouseClickCounter; i++) {
 //    honkText = honkText + honkText;
 //  }
-}
