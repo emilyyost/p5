@@ -6,7 +6,8 @@ var bikeUpOnce = true;
 var otherMouseX;
 var otherMouseY;
 var mouseClickCounter = 0;
-var honkText = "Honk!";
+var honkText = " Honk";
+var honkTextArray = [];
 
 function setup() {
   createCanvas(640, 480);
@@ -115,7 +116,7 @@ function draw() {
   strokeWeight(0);
   strokeCap(ROUND);
   textSize(30);
-  text(honkText, otherMouseX, otherMouseY);
+  text(honkTextArray.toString() + "!", otherMouseX, otherMouseY);
   pop();
 
 //car and bike move
@@ -160,9 +161,6 @@ function mouseClicked() {
   otherMouseX = winMouseX;
   otherMouseY = winMouseY;
   mouseClickCounter++;
-if (mouseClickCounter === 2) {
-  honkText = honkText + " " + honkText;
-} else if (mouseClickCounter === 3) {
-  honkText = honkText + " " + honkText;
-}
+  append(honkTextArray, honkText)
+  //honkTextArray.push(honkText);
 }
