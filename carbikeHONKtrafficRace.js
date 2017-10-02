@@ -1,7 +1,9 @@
 var xCarGo = 640;
 var xBikeGo = 290;
+var yCarGo = 25;
 var carColor = ["red", "black", "yellow", "orange", "violet"];
 var chooseColor = carColor[Math.floor(Math.random() * carColor.length)];
+var carSpeed;
 var carLeftOnce = false;
 var carRightOnce = false;
 var bikeUpOnce = true;
@@ -14,9 +16,10 @@ var honkTextArray = [];
 //random color
 
 function setup() {
-  createCanvas(640, 480);
+  createCanvas(640, 645);
   xCarGo = 300;
   xBikeGo = 180;
+  yCarGo = 0;
 }
 
 function draw() {
@@ -26,7 +29,7 @@ function draw() {
   stroke("black");
   strokeWeight(1);
   fill(158, 154, 160);
-  rect(-1, 315, 641, 255);
+  rect(-1, 315, 641, 455);
 
   //bike lane white line
   stroke(255);
@@ -49,11 +52,11 @@ function draw() {
   triangle(200, 360, 210, 355, 210, 365);
 
   //multiple cars
-  emilyCar(xCarGo, carColor[3])
-  emilyCar(xCarGo + 100, carColor[1]);
-  emilyCar(xCarGo + 200, carColor[2]);
-  emilyCar(xCarGo + 300, carColor[3]);
-  emilyCar(xCarGo + 400, carColor[4]);
+  emilyCar(xCarGo, carColor[3], yCarGo);
+  emilyCar(xCarGo + 100, carColor[1], yCarGo + 50);
+  emilyCar(xCarGo + 200, carColor[2], yCarGo + 100);
+  emilyCar(xCarGo + 300, carColor[3], yCarGo + 150);
+  emilyCar(xCarGo + 400, carColor[4], yCarGo + 200);
 
   //bike wheels
   noFill();
@@ -107,19 +110,19 @@ function draw() {
   text(honkTextArray.toString() + "!", otherMouseX, otherMouseY);
   pop();
 
-//car and bike move
-  if (carLeftOnce === true) {
-    xCarGo -=3;
-    if (xCarGo <= -665) {
-      xCarGo = 600;
-    }
-  } else if (carRightOnce === true){
-    xCarGo +=3;
-    if (xCarGo >= 600) {
-      xCarGo = -665;
-    }
+ //car and bike move
+ if (carLeftOnce === true) {
+  xCarGo -=3;
+  if (xCarGo <= -665) {
+    xCarGo = 600;
   }
-  if (bikeUpOnce === true) {
+} else if (carRightOnce === true){
+  xCarGo +=3;
+  if (xCarGo >= 600) {
+    xCarGo = -665;
+  }
+} 
+if (bikeUpOnce === true) {
     xBikeGo -= 1;
     if (xBikeGo <= -400) {
       xBikeGo = 290;
@@ -127,33 +130,33 @@ function draw() {
   }
 }
 
-function emilyCar(xCarGo, items) {
+function emilyCar(xCarGo, items, yCarGo) {
   //car body
   push();
   noStroke();
   fill(chooseColor);
   beginShape();
-  vertex(xCarGo + 85, 434);
-  vertex(xCarGo + 85, 410);
-  vertex(xCarGo + 110, 410);
-  vertex(xCarGo + 110, 384);
-  vertex(xCarGo + 150, 384);
-  vertex(xCarGo + 150, 410);
-  vertex(xCarGo + 165, 410);
-  vertex(xCarGo + 165, 434);
+  vertex(xCarGo + 85, yCarGo + 434);
+  vertex(xCarGo + 85, yCarGo + 410);
+  vertex(xCarGo + 110, yCarGo + 410);
+  vertex(xCarGo + 110, yCarGo + 384);
+  vertex(xCarGo + 150, yCarGo + 384);
+  vertex(xCarGo + 150, yCarGo + 410);
+  vertex(xCarGo + 165, yCarGo + 410);
+  vertex(xCarGo + 165, yCarGo + 434);
   endShape(CLOSE);
   fill(255, 204, 0);
-  arc(xCarGo + 125, 400, 20, 20, 135, HALF_PI+PI+PI+QUARTER_PI, PIE);
+  arc(xCarGo + 125, yCarGo + 400, 20, 20, 135, HALF_PI+PI+PI+QUARTER_PI, PIE);
   strokeWeight(2)
   stroke("black");
-  point(xCarGo + 123, 396);
+  point(xCarGo + 123, yCarGo + 396);
   pop();
 
   //car wheels
   fill("black");
   stroke("black");
-  arc(xCarGo + 100, 434, 20, 20, 0, PI);
-  arc(xCarGo + 150, 434, 20, 20, 0, PI);
+  arc(xCarGo + 100, yCarGo + 434, 20, 20, 0, PI);
+  arc(xCarGo + 150, yCarGo + 434, 20, 20, 0, PI);
 } 
 
 function keyPressed() {
