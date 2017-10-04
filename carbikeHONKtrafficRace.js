@@ -52,11 +52,11 @@ function draw() {
   triangle(200, 360, 210, 355, 210, 365);
 
   //multiple cars
-  emilyCar(xCarGo, carColor[3], yCarGo);
-  emilyCar(xCarGo + 100, carColor[1], yCarGo + 50);
-  emilyCar(xCarGo + 200, carColor[2], yCarGo + 100);
-  emilyCar(xCarGo + 300, carColor[3], yCarGo + 150);
-  emilyCar(xCarGo + 400, carColor[4], yCarGo + 200);
+  drawCar(xCarGo, carColor[3], yCarGo);
+  drawCar(xCarGo + 100, carColor[1], yCarGo + 50);
+  drawCar(xCarGo + 200, carColor[2], yCarGo + 100);
+  drawCar(xCarGo + 300, carColor[3], yCarGo + 150);
+  drawCar(xCarGo + 400, carColor[4], yCarGo + 200);
 
   //bike wheels
   noFill();
@@ -130,11 +130,11 @@ if (bikeUpOnce === true) {
   }
 }
 
-function emilyCar(xCarGo, items, yCarGo) {
+function drawCar(xCarGo, carColor, yCarGo) {
   //car body
   push();
   noStroke();
-  fill(chooseColor);
+  fill(carColor);
   beginShape();
   vertex(xCarGo + 85, yCarGo + 434);
   vertex(xCarGo + 85, yCarGo + 410);
